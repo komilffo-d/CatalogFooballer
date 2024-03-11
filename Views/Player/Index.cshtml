@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CatalogFooball.Models.FootballPlayer>
+
+@{
+    ViewData["Title"] = "Список футболистов";
+}
+
+<h1>Отображение страницы</h1>
+
+<p>
+    <a asp-action="Create">Список футболистов</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Command.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Command.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { Id= item.Id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
