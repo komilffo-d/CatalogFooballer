@@ -10,7 +10,7 @@ namespace CatalogFooball.Models.DTO
 
         public string Name { get; set; }
 
-        public Sex Sex { get; set; } = Sex.OTHER;
+        public string Sex { get; set; } 
 
         public DateOnly? DateBirthday { get; set; } = null;
 

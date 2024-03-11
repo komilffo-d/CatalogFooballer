@@ -11,7 +11,7 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr >
 
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -30,8 +30,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
+            <tr data-player="@Html.DisplayFor(modelItem => item.Id)">
+                <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>

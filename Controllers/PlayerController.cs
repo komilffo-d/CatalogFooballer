@@ -1,11 +1,13 @@
 ﻿using CatalogFooball.Database;
 using CatalogFooball.Models;
 using CatalogFooball.Models.DTO;
+using CatalogFooball.Services.Enums;
 using CatalogFooball.Services.SignalR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace CatalogFooball.Controllers
 {
@@ -56,7 +58,7 @@ namespace CatalogFooball.Controllers
             FootballPlayerDTO playerDTO = new FootballPlayerDTO()
             {
                 Name = player.Name,
-                Sex = player.Sex,
+                Sex = player.Sex.GetAttribute<DisplayAttribute>().Name,
                 DateBirthday = player.DateBirthday,
                 Command = player.Command.Name,
                 Country = player.Country.Name
@@ -84,7 +86,7 @@ namespace CatalogFooball.Controllers
             FootballPlayerDTO playerDTO = new FootballPlayerDTO()
             {
                 Name = player.Name,
-                Sex = player.Sex,
+                Sex = player.Sex.GetAttribute<DisplayAttribute>().Name,
                 DateBirthday= player.DateBirthday,
                 Command= player.Command.Name,
                 Country= player.Country.Name
