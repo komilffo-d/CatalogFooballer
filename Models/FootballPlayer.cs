@@ -16,6 +16,10 @@ namespace CatalogFooball.Models
         [Display(Name = "Наименование футболиста")]
         public string Name { get; set; }
 
+        [Required]
+        [Display(Name = "Фамилия футболиста")]
+        public string Surname { get; set; }
+
         [AllowNull]
         [Display(Name = "Пол футболиста")]
         public Sex Sex { get; set; } = Sex.OTHER;

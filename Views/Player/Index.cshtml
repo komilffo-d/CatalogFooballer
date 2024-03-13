@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.Sex)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.DateBirthday)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Command.Name)
             </th>
             <th>
@@ -36,6 +39,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                    @(item.DateBirthday.HasValue ? item.DateBirthday.Value.ToLongDateString() : "Отсутствуют данные о дате рождения!")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Command.Name)

@@ -2,22 +2,27 @@
     .withUrl("/Player/Hub")
     .build();
 
-/*$("form").on("submit", function (e) {
-    hub.invoke("SendAddedUser")
-        .catch(function (err) {
-            console.error(err.toString());
-        });
-});*/
-
+function isDate(date) {
+    return date && (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
+}
 hub.on("PlayerAdd", function (playerId, player) {
 
-    let keyName = ["name", "sex","command","country"];
+    let keyName = ["name", "sex", "dateBirthday","command", "country",];
     const tableBody = $(".table >  tbody").get(0);
     let tr = document.createElement("tr");
     
     keyName.forEach((k) => {
         let td = document.createElement("td");
-        td.textContent = player[k];
+        switch (k) {
+            case "dateBirthday":
+                td.textContent = isDate(player[k]) ? new Intl.DateTimeFormat("ru", { dateStyle: "long" }).format(new Date(player[k])).toString() : "Отсутствуют данные о дате рождения!";
+                break;
+            default:
+                td.textContent = player[k];
+                break;
+        }
+
+
         tr.appendChild(td);
     });
 
@@ -36,13 +41,22 @@ hub.on("PlayerAdd", function (playerId, player) {
 
 hub.on("PlayerModify", function (playerId, player) {
 
-    let keyName = ["name", "sex", "command", "country"];
+    let keyName = ["name", "sex", "dateBirthday","command", "country", ];
     const tableBody = $(".table >  tbody").get(0);
-    let tr = document.createElement("tr");
+    let tr = $(tableBody).find(`[data-player=${playerId}]`).empty().get(0);
 
     keyName.forEach((k) => {
         let td = document.createElement("td");
-        td.textContent = player[k];
+        switch (k) {
+            case "dateBirthday":
+                td.textContent = isDate(player[k]) ? new Intl.DateTimeFormat("ru", { dateStyle: "long" }).format(new Date(player[k])).toString() : "Отсутствуют данные о дате рождения!";
+                break;
+            default:
+                td.textContent = player[k];
+                break;
+        }
+
+        
         tr.appendChild(td);
     });
 
@@ -52,9 +66,6 @@ hub.on("PlayerModify", function (playerId, player) {
     a.href = `/Player/Edit/${playerId}`;
     td.appendChild(a);
     tr.appendChild(td);
-
-
-    tableBody.appendChild(tr);
 
 
 });
