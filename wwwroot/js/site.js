@@ -7,10 +7,10 @@ function isDate(date) {
 }
 hub.on("PlayerAdd", function (playerId, player) {
 
-    let keyName = ["name", "sex", "dateBirthday","command", "country",];
+    let keyName = ["surname","name", "sex", "dateBirthday","command", "country",];
     const tableBody = $(".table >  tbody").get(0);
     let tr = document.createElement("tr");
-    
+    tr.setAttribute("data-player", playerId.toString())
     keyName.forEach((k) => {
         let td = document.createElement("td");
         switch (k) {
@@ -41,7 +41,7 @@ hub.on("PlayerAdd", function (playerId, player) {
 
 hub.on("PlayerModify", function (playerId, player) {
 
-    let keyName = ["name", "sex", "dateBirthday","command", "country", ];
+    let keyName = ["surname", "name", "sex", "dateBirthday","command", "country", ];
     const tableBody = $(".table >  tbody").get(0);
     let tr = $(tableBody).find(`[data-player=${playerId}]`).empty().get(0);
 

@@ -6,7 +6,7 @@ namespace CatalogFooball.Models.DTO
 {
     public class FootballPlayerDTO
     {
-
+        public string Surname { get; set; }
 
         public string Name { get; set; }
 

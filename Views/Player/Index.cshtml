@@ -12,7 +12,9 @@
 <table class="table">
     <thead>
         <tr >
-
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -33,8 +35,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-            <tr data-player="@Html.DisplayFor(modelItem => item.Id)">
-                <td>
+
+            <tr data-player="@Html.DisplayFor(modelItem => item.Id)" class="table-row">
+            <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
@@ -50,8 +56,15 @@
                 @Html.DisplayFor(modelItem => item.Country.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { Id= item.Id})
+                <div class="table-row__edit">
+                    <div class="table-row__edit__image">
+                        <img src="~/images/vectors/pen_edit.svg" width="30"/>
+                    </div>
+                    @Html.ActionLink("Редактировать игрока", "Edit", new { Id = item.Id }, new { @class = "table-row__edit__link" })
+                </div>
+
             </td>
+
         </tr>
 }
     </tbody>

@@ -39,6 +39,5 @@ namespace CatalogFooball.Models
        
 
 
-
     }
 }

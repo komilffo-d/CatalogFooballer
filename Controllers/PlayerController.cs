@@ -57,6 +57,7 @@ namespace CatalogFooball.Controllers
             _context.Entry(player).Reference(p => p.Command).Load();
             FootballPlayerDTO playerDTO = new FootballPlayerDTO()
             {
+                Surname=player.Surname,
                 Name = player.Name,
                 Sex = player.Sex.GetAttribute<DisplayAttribute>().Name,
                 DateBirthday = player.DateBirthday,
@@ -85,6 +86,7 @@ namespace CatalogFooball.Controllers
             _context.Entry(player).Reference(p => p.Command).Load();
             FootballPlayerDTO playerDTO = new FootballPlayerDTO()
             {
+                Surname = player.Surname,
                 Name = player.Name,
                 Sex = player.Sex.GetAttribute<DisplayAttribute>().Name,
                 DateBirthday= player.DateBirthday,
